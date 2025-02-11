@@ -28,9 +28,8 @@
   position: absolute;
   top: 20px;
   right: 28px;
-  background-image: url("../../assets/Close\ Button.svg");
+  background-image: url(/assets/CloseIcon.svg);
   background-repeat: no-repeat;
-  background-size: contain;
   background-color: transparent;
   cursor: pointer;
   border: none;
