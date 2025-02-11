@@ -1,0 +1,43 @@
+.modal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__image {
+  object-fit: contain;
+  width: 100%;
+  height: 498px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.modal__content.modal__content_type_image {
+  border-radius: 16px;
+  padding: 0;
+}
+
+.modal__footer {
+  padding: 0 0 32px 32px;
+}
+
+.modal__caption {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 20px 0 12px 0;
+}
+
+.modal__weather {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0;
+}
+
+.modal__close {
+  background-image: url(../../assets/IMG\ PREVIEW\ CLOSE.png);
+}
