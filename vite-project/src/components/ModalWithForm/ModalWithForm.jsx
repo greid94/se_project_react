@@ -6,7 +6,7 @@ function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button onClick={onClose} className="modal__close" type="button">
-          Close
+          {" "}
         </button>
         <form className="modal__form">
           {children}

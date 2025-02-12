@@ -39,5 +39,9 @@
 }
 
 .modal__close {
-  background-image: url(../../assets/IMG\ PREVIEW\ CLOSE.png);
+  background-image: url("../../assets/Close\ Button.svg");
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  background-repeat: no-repeat;
 }
