@@ -1,6 +1,5 @@
 import "./ItemCard.css";
-
-function itemCard({ item, onCardClick }) {
+function ItemCard({ item, onCardClick }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
@@ -17,4 +16,4 @@ function itemCard({ item, onCardClick }) {
     </li>
   );
 }
-export default itemCard;
+export default ItemCard;
