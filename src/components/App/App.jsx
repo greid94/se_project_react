@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-
+import { defaultClothingItems } from "../../utils/constants";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weather.api";
 import { coordinates, APIkey } from "../../utils/constants";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import AddItemModal from "../AddItemModal/AddItemModal";
-
+import { Routes, Route } from "react-router-dom";
+import Profile from "../Profile/Profile";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -17,7 +18,7 @@ function App() {
     city: "",
   });
 
-  const [clothingItems, setClothingItems] = useState([]);
+  const [clothingItems, setClothingItems] = useState([...defaultClothingItems]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const handleCardClick = (card) => {
@@ -37,9 +38,9 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    setClothingItems((prevItems) => [
+    setClothingItems((clothingItems) => [
       { name, imageUrl, weather },
-      ...prevItems,
+      ...clothingItems,
     ]);
     closeActiveModal();
   };
@@ -64,11 +65,23 @@ function App() {
             handleAddButtonClick={handleAddButtonClick}
             weatherData={weatherData}
           />
-          <Main
-            weatherData={weatherData}
-            handleCardClick={handleCardClick}
-            clothingItems={clothingItems}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={<Profile onCardClick={handleCardClick} />}
+            />
+          </Routes>
+
           <Footer />
         </div>
         <AddItemModal
