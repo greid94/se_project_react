@@ -11,12 +11,16 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 function App() {
-  const [weatherData, setWeatherData] = useState({
-    type: "",
-    temp: { F: 999 },
-    city: "",
-  });
+  const [weatherData, setWeatherData] = useState(
+    {
+      type: "",
+      temp: { F: 999 },
+      city: "",
+    },
+    []
+  );
 
   const [clothingItems, setClothingItems] = useState([...defaultClothingItems]);
   const [activeModal, setActiveModal] = useState("");
@@ -37,12 +41,26 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    setClothingItems((clothingItems) => [
-      { name, imageUrl, weather },
-      ...clothingItems,
-    ]);
-    closeActiveModal();
+  const handleAddItemModalSubmit = (item) => {
+    addItem(item)
+      .then((item) => {
+        console.log(item);
+        setClothingItems([item, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleDeleteCard = (cardId) => {
+    deleteItem(cardId)
+      .then(() => {
+        console.log(cardId);
+        setClothingItems(([item, ...clothingItems]) =>
+          [item, ...clothingItems].filter((item) => item._id !== cardId)
+        );
+        closeActiveModal();
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -51,6 +69,14 @@ function App() {
         const filterData = filterWeatherData(data);
 
         setWeatherData(filterData);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data), console.log(data);
       })
       .catch(console.error);
   }, []);
@@ -95,6 +121,7 @@ function App() {
           card={selectedCard}
           activeModal={activeModal}
           onClose={closeActiveModal}
+          onDelete={handleDeleteCard}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

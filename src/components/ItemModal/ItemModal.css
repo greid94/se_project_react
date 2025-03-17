@@ -22,6 +22,7 @@
 
 .modal__footer {
   padding: 0 0 32px 32px;
+  position: relative;
 }
 
 .modal__caption {
@@ -51,4 +52,10 @@
   width: 20px;
   color: rgba(255, 255, 255, 1);
   background-repeat: no-repeat;
+}
+
+.modal__delete {
+  position: absolute;
+  left: 365px;
+  color: rgba(255, 77, 0, 1);
 }
