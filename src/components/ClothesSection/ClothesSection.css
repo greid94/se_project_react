@@ -1,0 +1,31 @@
+.clothes-section__items {
+  width: 1015px;
+  height: 676px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 21px;
+}
+
+.clothes-section__content {
+  display: flex;
+  gap: 20px;
+}
+
+.clothes-section__text {
+  width: 95px;
+  height: 25px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.8px;
+}
+
+.clothes-section__button {
+  border: none;
+  width: 99px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.8px;
+  opacity: 60%;
+  cursor: pointer;
+}

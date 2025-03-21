@@ -6,27 +6,27 @@
   cursor: pointer;
   overflow: hidden;
   position: relative;
+  margin-left: auto;
 }
 
 .toggle-switch__checkbox {
   opacity: 0;
 }
+
 .toggle-switch__circle {
+  background-color: black;
   width: 28px;
   height: 28px;
-  background-color: black;
-  border-radius: 50%;
   position: absolute;
   border-radius: 50%;
   left: 0;
-  transition: left 0.3s;
+  transition: all 0.3s;
 }
 
 .toggle-switch__text {
   position: absolute;
+  color: gray;
   top: 5px;
-
-  color: grey;
 }
 
 .toggle-switch__text_F {
@@ -36,7 +36,6 @@
 .toggle-switch__text_C {
   right: 9px;
 }
-
 .toggle-switch__checkbox:checked ~ .toggle-switch__circle {
   left: 28px;
 }
