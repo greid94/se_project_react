@@ -1,6 +1,4 @@
 .profile {
-  .profile {
-    display: flex;
-    gap: 116px;
-  }
+  display: flex;
+  gap: 116px;
 }
