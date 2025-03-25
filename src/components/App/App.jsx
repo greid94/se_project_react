@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -37,6 +37,24 @@ function App() {
   const handleAddButtonClick = () => {
     setActiveModal("add-garment");
   };
+
+  const handleEscClose = useCallback(
+    (e) => {
+      if (e.key === "Escape" && activeModal) {
+        closeActiveModal();
+      }
+    },
+    [activeModal]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [handleEscClose]);
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
