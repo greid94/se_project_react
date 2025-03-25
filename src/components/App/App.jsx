@@ -69,18 +69,6 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleDeleteCard = (cardId) => {
-    deleteItem(cardId)
-      .then(() => {
-        console.log(cardId);
-        setClothingItems(([item, ...clothingItems]) =>
-          [item, ...clothingItems].filter((item) => item._id !== cardId)
-        );
-        closeActiveModal();
-      })
-      .catch((err) => console.log(err));
-  };
-
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -90,6 +78,17 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  const handleDeleteCard = (cardId) => {
+    deleteItem(cardId)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== cardId)
+        );
+        closeActiveModal();
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getItems()
