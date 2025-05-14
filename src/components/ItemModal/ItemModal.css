@@ -1,69 +1,59 @@
-.modal {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.modal__content_type_image {
+  background-color: #fff;
+  padding: 0;
+  max-width: 498px;
+  position: relative;
 }
 
 .modal__image {
-  object-fit: contain;
-  width: 100%;
-  height: 498px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.modal__content.modal__content_type_image {
   border-radius: 16px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 100%;
   padding: 0;
 }
 
 .modal__footer {
-  padding: 0 0 32px 32px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 32px 32px;
 }
 
 .modal__caption {
-  font-size: 20px;
+  font-family: "CabinetGrotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
+  font-size: 20px;
   line-height: 24px;
-  margin: 20px 0 12px 0;
+  margin: 0;
+  padding-bottom: 12px;
 }
 
 .modal__weather {
-  font-size: 20px;
+  font-family: "CabinetGrotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
+  font-size: 20px;
   line-height: 24px;
   margin: 0;
 }
 
-/*.modal__close {
-  background-image: url("../../assets/Close\ Button.svg");
-  height: 20px;
-  width: 20px;
-  background-color: transparent;
-  background-repeat: no-repeat;
-}*/
-.modal__close {
-  background-image: url("../../assets/close button item.svg");
-  height: 20px;
-  width: 20px;
-  color: rgba(255, 255, 255, 1);
-  background-repeat: no-repeat;
+.modal__close_item_modal {
+  background: transparent url(../../assets/close_white.svg) center no-repeat;
 }
 
 .modal__delete {
-  position: absolute;
-  margin-left: 297px;
-  top: 2px;
-  right: 2px;
   border: none;
-  background: transparent;
   color: #ff4d00;
+  cursor: pointer;
+  background-color: transparent;
+  font-family: "CabinetGrotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  cursor: pointer;
+  width: 101px;
+  height: 24px;
+  position: absolute;
+  left: 365px;
+  bottom: 70px;
+  padding: 0;
+  margin-right: 32px;
 }

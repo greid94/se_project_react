@@ -7,20 +7,36 @@ function ModalWithForm({
   onClose,
   isOpen,
   onSubmit,
+  isFormValid,
+  alternativeText,
+  onAlternativeClick,
 }) {
   return (
-    <div className={`modal ${isOpen && "modal_opened"}`}>
+    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
-        <button onClick={onClose} className="modal__close" type="button">
+        <button onClick={onClose} type="button" className="modal__close">
           {" "}
         </button>
-
-        <form onSubmit={onSubmit} className="modal__form">
+        <form className="modal__form" onSubmit={onSubmit} action="">
           {children}
-          <button type="submit" className="modal__submit">
+          <button
+            type="submit"
+            className={`modal__submit ${
+              isFormValid ? "modal__submit_valid" : ""
+            }`}
+          >
             {buttonText}
           </button>
+          {alternativeText && onAlternativeClick && (
+            <button
+              type="button"
+              className="modal__alternative-button"
+              onClick={onAlternativeClick}
+            >
+              {alternativeText}
+            </button>
+          )}
         </form>
       </div>
     </div>

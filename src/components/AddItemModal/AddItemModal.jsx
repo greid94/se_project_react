@@ -2,25 +2,16 @@ import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
-export default function AddItemModal({
-  activeModal,
-  onClose,
-  isOpen,
-  onhandleAddItemModalSubmit,
-}) {
+function AddItemModal({ onClose, isOpen, activeModal, onAddItemModalSubmit }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
-
-  useEffect(() => {
-    setName("");
-    setImageUrl("");
-    setWeather("");
-  }, [isOpen]);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
+
   const handleImageUrlChange = (e) => {
     setImageUrl(e.target.value);
   };
@@ -28,90 +19,126 @@ export default function AddItemModal({
   const handleWeatherChange = (e) => {
     setWeather(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onhandleAddItemModalSubmit({ name, imageUrl, weather });
+    console.log("AddItemModal handleSubmit called with values:", {
+      name,
+      imageUrl,
+      weather,
+    });
+    onAddItemModalSubmit({ name, imageUrl, weather }); //pass the inputs(state variables) (if passed as an object, remeber to desructure when passing to handleAddItemModalSubmit in App.jsx )
   };
+
+  const checkFormValidity = () => {
+    const isValid =
+      name.length >= 1 &&
+      name.length <= 30 &&
+      imageUrl.length > 0 &&
+      (weather === "hot" || weather === "warm" || weather === "cold");
+    return isValid;
+  };
+
+  useEffect(() => {
+    setIsFormValid(checkFormValidity());
+  }, [name, imageUrl, weather]);
+
+  useEffect(() => {
+    setName(""); //empty the inputs
+    setImageUrl("");
+    setWeather("");
+    setIsFormValid(false);
+  }, [isOpen]);
 
   return (
     <ModalWithForm
-      title="New Garment"
+      title="New garment"
       buttonText="Add garment"
       activeModal={activeModal}
       onClose={onClose}
       isOpen={isOpen}
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit} //renaming convention in react to rename the function with "on" when its passed as a prop
+      onClick={() => console.log("Button clicked!")}
+      isFormValid={isFormValid}
     >
-      <label htmlFor="name" className="modal__label">
-        Name
+      <label htmlFor="add-item-name" className="modal__label">
+        Name{" "}
         <input
           type="text"
-          className="modal__input"
-          id="name"
           name="name"
+          className="modal__input"
+          id="add-item-name"
+          placeholder="Name"
           required
           minLength="1"
           maxLength="30"
-          placeholder="Name"
           onChange={handleNameChange}
           value={name}
         />
       </label>
-      <label htmlFor="imageUrl" className="modal__label">
-        Image
-        {""}
+      <label htmlFor="add-item-imageUrl" className="modal__label">
+        Image{" "}
         <input
           type="url"
+          name="link"
           className="modal__input"
-          id="imageUrl"
-          name="name"
+          id="add-item-imageUrl"
+          placeholder="Image URL"
           required
-          minLength="1"
-          maxLength="80"
-          placeholder="Image Url"
           onChange={handleImageUrlChange}
           value={imageUrl}
         />
       </label>
-      <fieldset className="modal__radio-btns">
-        <legend className="modal__legend">Select the weather type</legend>
-        <label htmlFor="hot" className="modal__label modal__label_type_radio">
+      <fieldset className="modal__radio-buttons">
+        <legend className="modal__legend">Select the weather type:</legend>
+        <label
+          htmlFor="add-item-hot"
+          className="modal__label modal__label_type_radio"
+        >
           <input
-            id="hot"
+            id="add-item-hot"
             type="radio"
-            name="temp"
             className="modal__radio-input"
+            name="weather"
+            onChange={handleWeatherChange}
             value="hot"
-            onChange={handleWeatherChange}
             checked={weather === "hot"}
-          />
-          Hot
+          />{" "}
+          <span>Hot</span>
         </label>
-        <label htmlFor="warm" className="modal__label modal__label_type_radio">
+        <label
+          htmlFor="add-item-warm"
+          className="modal__label modal__label_type_radio"
+        >
           <input
-            id="warm"
+            id="add-item-warm"
             type="radio"
-            name="temp"
             className="modal__radio-input"
-            value="warm"
+            name="weather"
             onChange={handleWeatherChange}
+            value="warm"
             checked={weather === "warm"}
           />
-          Warm
+          <span>Warm</span>
         </label>
-        <label htmlFor="cold" className="modal__label modal__label_type_radio">
+        <label
+          htmlFor="add-item-cold"
+          className="modal__label modal__label_type_radio"
+        >
           <input
-            id="cold"
-            name="temp"
+            id="add-item-cold"
             type="radio"
             className="modal__radio-input"
-            value="cold"
+            name="weather"
             onChange={handleWeatherChange}
+            value="cold"
             checked={weather === "cold"}
           />
-          Cold
+          <span>Cold</span>
         </label>
       </fieldset>
     </ModalWithForm>
   );
 }
+
+export default AddItemModal;

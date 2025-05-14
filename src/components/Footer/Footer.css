@@ -1,19 +1,18 @@
-.footer {
-  margin-top: 171px;
-  padding: 0;
+.footer__content {
   display: flex;
+  justify-content: space-between;
+  padding: 85px 40px 24px;
+  font-family: "CabinetGrotesk", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #000000;
 }
 
-.footer__copyright {
+.footer__name {
   margin: 0;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
 }
 
-.footer__year {
-  margin: 0 0 0 auto;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
+.footer__date {
+  margin: 0;
 }

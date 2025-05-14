@@ -1,34 +1,31 @@
-.clothes-section__items {
-  width: 1015px;
-  height: 676px;
+.clothes-section {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.clothes-section__header {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  gap: 21px;
+  margin-top: 25px;
 }
 
-.clothes-section__content {
-  display: flex;
+.clothes-section__header-title {
+  margin: 16px 0;
+}
+
+.clothes-section__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 325px);
   gap: 20px;
-  padding-left: 40px;
+  padding: 0;
+  margin: 0;
 }
 
-.clothes-section__text {
-  width: 95px;
-  height: 25px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24.8px;
-}
-
-.clothes-section__button {
+.clothes-section__add-new-btn {
+  margin: 0 20px;
   border: none;
-  width: 99px;
-  height: 25px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24.8px;
-  opacity: 60%;
   cursor: pointer;
-  max-width: 100%;
+  font-weight: 700;
+  opacity: 60%;
 }
