@@ -16,6 +16,8 @@ function Profile({
         <SideBar onLogout={onLogout} onEditProfile={onEditProfile} />
       </section>
       <section className="profile__clothing-items">
+        // This is where the clothing items will be displayed // The clothing
+        items are passed as props to the ClothesSection component
         <ClothesSection
           clothingItems={clothingItems}
           handleCardClick={handleCardClick}

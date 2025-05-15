@@ -58,13 +58,14 @@ function RegisterModal({
   }, [email, password, name, avatar]);
 
   useEffect(() => {
-    setEmail(""); //empty the inputs
+    setEmail("");
     setPassword("");
     setName("");
     setAvatar("");
     setIsFormValid(false);
   }, [isOpen]);
-
+  // / Reset the form when the modal is closed
+  // This will clear the input fields and reset the form validity
   return (
     <ModalWithForm
       title="Sign Up"
@@ -72,7 +73,7 @@ function RegisterModal({
       activeModal={activeModal}
       onClose={onClose}
       isOpen={isOpen}
-      onSubmit={handleSubmit} //renaming convention in react to rename the function with "on" when its passed as a prop
+      onSubmit={handleSubmit}
       isFormValid={isFormValid}
       alternativeText="or Log in"
       onAlternativeClick={onLoginClick}
@@ -118,6 +119,7 @@ function RegisterModal({
           value={name}
         />
       </label>
+      // Avatar URL
       <label htmlFor="register-avatar" className="modal__label">
         Avatar URL{" "}
         <input
