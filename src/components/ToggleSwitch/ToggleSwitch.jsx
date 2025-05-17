@@ -8,6 +8,8 @@ function ToggleSwitch() {
   );
 
   return (
+    // This component is responsible for rendering the toggle switch for changing the temperature unit
+    // The toggle switch allows the user to switch between Fahrenheit and Celsius
     <label className="toggle-switch">
       <input
         onChange={handleToggleSwitchChange}

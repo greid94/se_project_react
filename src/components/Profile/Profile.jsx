@@ -3,6 +3,7 @@ import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
 
 function Profile({
+  // This component is responsible for rendering the user's profile page
   handleCardClick,
   clothingItems,
   handleAddClick,
@@ -11,13 +12,13 @@ function Profile({
   handleCardLike,
 }) {
   return (
+    // This is the main profile component that contains the sidebar and clothing items section
+    // The sidebar contains the user's profile information and the clothing items section displays the user's clothing items
     <div className="profile">
       <section className="profile__sidebar">
         <SideBar onLogout={onLogout} onEditProfile={onEditProfile} />
       </section>
       <section className="profile__clothing-items">
-        // This is where the clothing items will be displayed // The clothing
-        items are passed as props to the ClothesSection component
         <ClothesSection
           clothingItems={clothingItems}
           handleCardClick={handleCardClick}
