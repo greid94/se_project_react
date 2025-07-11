@@ -1,6 +1,13 @@
 import { BASE_HEADERS, baseUrl, getAuthHeaders } from "./api.js";
 import { request } from "./api.js";
 
+// Function to check if the response is ok
+app.get("/crash-test", () => {
+  setTimeout(() => {
+    throw new Error("Server will crash now");
+  }, 0);
+});
+
 // Register new user
 const signup = (name, avatar, email, password) => {
   return request(`${baseUrl}/signup`, {
