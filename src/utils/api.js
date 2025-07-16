@@ -1,7 +1,5 @@
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://api.greidwtwr.twilightparadox.com"
-    : "http://localhost:3001";
+import { baseUrl } from "./constants";
+
 const getToken = () => {
   return localStorage.getItem("jwt");
 };

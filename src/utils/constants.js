@@ -115,3 +115,8 @@ export const coordinates = {
 };
 
 export const APIkey = "e1031c91f2f7c0b25e142aaaa3ee02cc";
+
+export const baseUrl =
+  import.meta.env.MODE === "production"
+    ? "https://api.greidwtwr.twilightparadox.com"
+    : "http://localhost:3001";

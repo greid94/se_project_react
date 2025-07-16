@@ -5,13 +5,14 @@ import likeButton from "../../assets/like_button.svg";
 import likeButtonActive from "../../assets/like_button_liked.svg";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
-  const { currentUser, is } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const isLoggedIn = Boolean(currentUser);
 
   const isLiked =
+    isLoggedIn &&
     Array.isArray(item.likes) &&
-    item.likes.some((id) => id === currentUser?._id);
+    item.likes.some((id) => id === currentUser._id);
 
   const handleCardClick = () => {
     onCardClick(item);
