@@ -11,8 +11,8 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   const isLiked =
     isLoggedIn &&
-    Array.isArray(item.likes) &&
-    item.likes.some((id) => id === currentUser._id);
+    Array.isArray(item.likes ?? []) &&
+    (item.likes ?? []).some((id) => id === currentUser._id);
 
   const handleCardClick = () => {
     onCardClick(item);
